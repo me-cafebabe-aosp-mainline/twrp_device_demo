@@ -1,4 +1,4 @@
-TARGET_KERNEL_USE ?= 6.1
+TARGET_KERNEL_USE ?= 5.15
 #PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS ?= false
 
 KERNEL_ARTIFACTS_PATH := kernel/prebuilts/$(TARGET_KERNEL_USE)/arm64
@@ -20,7 +20,6 @@ RAMDISK_KERNEL_MODULES := \
     virtio_mmio.ko \
     virtio_net.ko \
     virtio_pci.ko \
-    virtio_pci_legacy_dev.ko \
     virtio_pci_modern_dev.ko \
     virtio-rng.ko \
     vmw_vsock_virtio_transport.ko \
