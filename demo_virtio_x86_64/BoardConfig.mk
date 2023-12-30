@@ -6,3 +6,6 @@
 
 # Inherit from demo_x86_64
 include device/demo/demo_x86_64/BoardConfig.mk
+
+# Include kernel configuration
+include device/demo/demo_virtio_x86_64/x86_64-kernel.mk

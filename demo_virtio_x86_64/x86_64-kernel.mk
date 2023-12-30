@@ -1,5 +1,5 @@
 TARGET_KERNEL_USE ?= 6.1
-PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS ?= false
+#PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS ?= false
 
 KERNEL_ARTIFACTS_PATH := kernel/prebuilts/$(TARGET_KERNEL_USE)/x86_64
 
@@ -9,9 +9,14 @@ VIRTUAL_DEVICE_KERNEL_MODULES_PATH := \
 # The list of modules to reach the second stage. For performance reasons we
 # don't want to put all modules into the ramdisk.
 RAMDISK_KERNEL_MODULES := \
+    failover.ko \
+    net_failover.ko \
     virtio_blk.ko \
     virtio_console.ko \
     virtio_dma_buf.ko \
+    virtio-gpu.ko \
+    virtio_input.ko \
+    virtio_net.ko \
     virtio_pci.ko \
     virtio_pci_legacy_dev.ko \
     virtio_pci_modern_dev.ko \
@@ -23,11 +28,13 @@ BOARD_SYSTEM_KERNEL_MODULES := $(wildcard $(KERNEL_ARTIFACTS_PATH)/*.ko)
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := \
     $(patsubst %,$(VIRTUAL_DEVICE_KERNEL_MODULES_PATH)/%,$(RAMDISK_KERNEL_MODULES))
 
+BOARD_RECOVERY_KERNEL_MODULES := $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES)
+
 BOARD_VENDOR_KERNEL_MODULES := \
     $(filter-out $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES),\
                  $(wildcard $(VIRTUAL_DEVICE_KERNEL_MODULES_PATH)/*.ko))
 
-BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := \
-    device/generic/goldfish/kernel_modules.blocklist
+#BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := \
+#    device/generic/goldfish/kernel_modules.blocklist
 
 EMULATOR_KERNEL_FILE := $(KERNEL_ARTIFACTS_PATH)/kernel-$(TARGET_KERNEL_USE)
