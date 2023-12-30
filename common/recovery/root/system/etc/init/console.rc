@@ -1,0 +1,9 @@
+service console /system/bin/sh
+    class core
+    console
+    user root
+    group root
+    seclabel u:r:recovery:s0
+
+on boot
+    start console
