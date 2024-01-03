@@ -7,7 +7,7 @@
 PRODUCT_RELEASE_NAME := demo_virtio_arm64
 
 # Inherit from demo_virtio_arm64 device
-include device/demo/demo_virtio_arm64/device.mk
+$(call inherit-product, device/demo/demo_virtio_arm64/device.mk)
 
 # Device identifier. This must come after all inclusions
 BOARD_VENDOR := Demo

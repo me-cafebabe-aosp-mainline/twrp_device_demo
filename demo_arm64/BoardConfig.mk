@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+USES_DEVICE_DEMO_ARM64 := true
+
 # Inherit from common
 include device/demo/common/BoardConfigCommon.mk
 

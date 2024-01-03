@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+USES_DEVICE_DEMO_VIRTIO_X86_64 := true
+
 # Inherit from demo_x86_64
 include device/demo/demo_x86_64/BoardConfig.mk
 

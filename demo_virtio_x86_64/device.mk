@@ -5,4 +5,4 @@
 #
 
 # Inherit from demo_x86_64
-include device/demo/demo_x86_64/device.mk
+$(call inherit-product, device/demo/demo_x86_64/device.mk)

@@ -5,4 +5,4 @@
 #
 
 # Inherit from common
-include device/demo/common/common.mk
+$(call inherit-product, device/demo/common/common.mk)
